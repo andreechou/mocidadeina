@@ -1,0 +1,26 @@
+=color($name, $color)
+  .color-#{$name}
+    color: $color
+
+=background-color($name, $color)
+  .background-#{$name}
+    background-color: $color
+
+=transition($time)
+  -webkit-transition: all $time ease
+  -moz-transition: all $time ease
+  transition: all $time ease
+
+=shadow()
+  -moz-box-shadow: 0 1px 3px 0 $shadow
+  -webkit-box-shadow: 0 1px 3px 0 $shadow
+  box-shadow: 0 1px 3px 0 $shadow
+  -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=3, Direction=90, Color='#444444')"
+  filter: progid:DXImageTransform.Microsoft.Shadow(Strength=3, Direction=90, Color='#444444')
+
+=gradient($color1, $color2)
+  background: $color1
+  background: -webkit-linear-gradient(left, $color1, $color2)
+  background: -o-linear-gradient(right, $color1, $color2)
+  background: -moz-linear-gradient(right, $color1, $color2)
+  background: linear-gradient(to right, $color1, $color2)

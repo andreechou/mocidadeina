@@ -1,0 +1,35 @@
+doctype html
+html(lang="pt-br")
+  head
+    meta(charset="UTF-8")
+    title= choustrap
+    link(rel="stylesheet", href="css/style.css")
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.26/vue.min.js")
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js")
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.6/marked.min.js")
+
+  body#app
+    header.header_main
+      .container
+        .row
+          .col-sm-4.col-sm-offset-4.wrap_logo
+            img(src="img/logo_mocidadeina-blue.svg", alt="")
+        .row
+          nav.nav_main
+            a.is-selected(href="#") eventos
+            a(href="#") informações
+
+    main.container
+      .row
+        article.article_events.col-sm-6.col-sm-offset-3(v-for="event in events")
+          .wrap_data
+            span.day {{event.dia}}
+            span.month {{event.mes}}
+          .wrap_content
+            span.week {{event.semana}} | {{event.horario}}
+            h1 {{event.evento}}
+            h2.h3 {{event.local}}
+            p {{event.descricao}}
+    
+
+    script(src="js/app.js")

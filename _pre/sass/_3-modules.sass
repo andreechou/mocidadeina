@@ -1,0 +1,82 @@
+// Header
+// ––––––––––––––––––––––––––––––––––––––––––––––––––
+
+header.header_main
+  background: $blue
+  background: -webkit-linear-gradient(left, $blue-dark, $blue)
+  background: -o-linear-gradient(right, $blue-dark, $blue)
+  background: -moz-linear-gradient(right, $blue-dark, $blue)
+  background: linear-gradient(to right, $blue-dark, $blue)
+  height: 16rem
+  position: relative
+  .wrap_logo
+    margin-top: 3rem
+
+
+// Nav
+// ––––––––––––––––––––––––––––––––––––––––––––––––––
+
+nav.nav_main
+  margin-top: 3.5rem
+  text-align: center
+  a
+    margin: 0 4rem
+    font-size: 1.8rem
+    font-weight: 600
+    text-transform: uppercase
+    padding-bottom: .25rem
+  a.is-selected
+    border-bottom: 3px solid $orange
+
+
+// Articles
+// ––––––––––––––––––––––––––––––––––––––––––––––––––
+
+article.article_events
+  position: relative
+  height: 20rem
+  margin-top: 4rem
+  background: $orange
+  background: -webkit-linear-gradient(left, $orange, $orange-light)
+  background: -o-linear-gradient(right, $orange, $orange-light)
+  background: -moz-linear-gradient(right, $orange, $orange-light)
+  background: linear-gradient(to right, $orange, $orange-light)
+
+  .wrap_data
+    position: absolute
+    top: 1rem
+    left: 1rem
+    background-color: $white
+    height: 18rem
+    width: 18rem
+    color: $blue-dark
+
+    span.day
+      position: absolute
+      width: 18rem
+      text-align: center
+      top: -2rem
+      left: -.5rem
+      font-family: $hand-font
+      font-size: 14rem
+
+    span.month
+      position: absolute
+      width: 18rem
+      text-align: center
+      left: 0
+      bottom: 0
+      font-family: $hand-font
+      font-size: 5rem
+
+  .wrap_content
+    margin-left: 20rem
+    color: $white
+
+    span.week
+      display: inline-block
+      margin-top: 2rem
+      font-weight: 600
+      font-size: 1.8rem
+
+
