@@ -2,11 +2,15 @@ doctype html
 html(lang="pt-br")
   head
     meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no")
     title= choustrap
+    link(rel="stylesheet", href="fonts/stylesheet.css")
+    link(rel="stylesheet", href="fonts/themify-icons.css")
     link(rel="stylesheet", href="css/style.css")
     script(src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.26/vue.min.js")
     script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js")
     script(src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.6/marked.min.js")
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/vue-router/0.7.13/vue-router.min.js")
 
   body#app
     header.header_main
@@ -15,21 +19,92 @@ html(lang="pt-br")
           .col-sm-4.col-sm-offset-4.wrap_logo
             img(src="img/logo_mocidadeina-blue.svg", alt="")
         .row
-          nav.nav_main
-            a.is-selected(href="#") eventos
-            a(href="#") informações
+    //nav.nav_main.container.hidden-xs
+      a(v-link="{ path: '/', exact: true }")
+        span.ti-calendar
+        span.text eventos
+      a(v-link="{ path: '/infos' }") informações
+    nav.nav_main-mobile
+      a(v-link="{ path: '/', exact: true }")
+        span.ti-calendar
+      a(v-link="{ path: '/infos' }")
+        span.ti-info-alt
+      a(v-link="{ path: '/print' }")
+        span.ti-pin-alt
 
-    main.container
-      .row
-        article.article_events.col-sm-6.col-sm-offset-3(v-for="event in events")
-          .wrap_data
-            span.day {{event.dia}}
-            span.month {{event.mes}}
-          .wrap_content
-            span.week {{event.semana}} | {{event.horario}}
-            h1 {{event.evento}}
-            h2.h3 {{event.local}}
-            p {{event.descricao}}
+    
+    router-view
+
+    template#pgEventos
+      main.container
+        .row
+          article.article_events.col-sm-8.col-sm-offset-2(v-for="event in events", v-link="{name: 'event', params: {id: $index}}")
+            .wrap_data
+              span.day {{event.dia}}
+              span.month {{event.mes}}
+            .wrap_content
+              hgroup.hidden-xs
+                h1.h2 {{event.evento}}
+                h2.h3 {{event.local}}
+              hgroup.visible-xs-block
+                h1.h3 {{event.evento}}
+                h2.h4 {{event.local}}
+              span.week {{event.semana}} {{event.horario}}
+              //- p {{event.descricao}}
+
+    template#pgEvento
+      header.header_single
+        .wrap_data
+          .container
+            span.day {{events[$route.params.id].dia}}
+            span.month {{events[$route.params.id].mes}}
+          
+      main.main_single.container
+        h1 {{events[$route.params.id].evento}}
+        h2 {{event.local}}
+        span.week {{events[$route.params.id].semana}} {{events[$route.params.id].horario}}
+        {{{events[$route.params.id].descricao | content}}}
+
+    template#pgInformacoes
+      header.header_single
+        .wrap_data
+          .container
+            span.day infos
+      main.container
+        .row
+          article.article_infos.col-sm-8.col-sm-offset-2(v-for="information in informations", v-link="{name: 'information', params: {id: $index}}")
+            h2 {{information.local}}
+
+    template#pgInformacao
+      header.header_single
+        .wrap_data
+          .container
+            h1 {{informations[$route.params.id].local}}
+      main.main_single.container
+        dl
+          dt Dia
+          dd {{informations[$route.params.id].semana}}
+          dt Horário
+          dd {{informations[$route.params.id].horario}}
+          dt Endereço
+          dd {{informations[$route.params.id].endereco}}
+          dt Infos
+          dd {{informations[$route.params.id].descricao}}
+          
+        {{{informations[$route.params.id].map | map}}}
+
+    template#pgPrint
+      header.header_single
+        .wrap_data
+          .container
+            span.day print
+      main
+        article.article_events.col-sm-8.col-sm-offset-2(v-link="{ path: '/print/month' }")
+          h2 Eventos do Mês
+        article.article_events.col-sm-8.col-sm-offset-2(v-link="{ path: '/print/day' }")
+          h2 Próximo evento
+
+    template#pgPrintMonth
     
 
     script(src="js/app.js")

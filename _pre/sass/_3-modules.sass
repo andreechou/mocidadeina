@@ -2,81 +2,214 @@
 // ––––––––––––––––––––––––––––––––––––––––––––––––––
 
 header.header_main
-  background: $blue
-  background: -webkit-linear-gradient(left, $blue-dark, $blue)
-  background: -o-linear-gradient(right, $blue-dark, $blue)
-  background: -moz-linear-gradient(right, $blue-dark, $blue)
-  background: linear-gradient(to right, $blue-dark, $blue)
-  height: 16rem
+  background-color: $secondary-color
+  height: 7.2rem
   position: relative
   .wrap_logo
-    margin-top: 3rem
+    margin-top: 2rem
+    text-align: center
+    img
+      height: 3.2rem
+@media screen and (min-width: 768px) // Desktop
+  header.header_main
+    height: 9rem
+    .wrap_logo img
+      height: 5rem
+
+header.header_single
+  background: #EB5C2E
+  background: -moz-linear-gradient(top,  rgba(235,92,46,1) 0%, rgba(245,158,51,1) 100%)
+  background: -webkit-linear-gradient(top,  rgba(235,92,46,1) 0%,rgba(245,158,51,1) 100%)
+  background: linear-gradient(to bottom,  rgba(235,92,46,1) 0%,rgba(245,158,51,1) 100%)
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eb5c2e', endColorstr='#f59e33',GradientType=0 )
+  
+  position: relative
+  height: 12.8rem
+  .wrap_data
+    position: absolute
+    bottom: 0
+    width: 100%
+    color: $white
+  span.day
+    display: inline-block
+    font-family: $hand-font
+    font-size: 7.2rem
+    margin-right: 1.2rem
+  span.month
+    font-family: $hand-font
+    font-size: 4.8rem
 
 
 // Nav
 // ––––––––––––––––––––––––––––––––––––––––––––––––––
 
 nav.nav_main
-  margin-top: 3.5rem
   text-align: center
+  background-color: $secondary-color
   a
-    margin: 0 4rem
+    padding: 2rem
+    width: 33.33333%
+    display: inline-block
+
     font-size: 1.8rem
     font-weight: 600
     text-transform: uppercase
     padding-bottom: .25rem
-  a.is-selected
-    border-bottom: 3px solid $orange
+  a.is-selected, a.v-link-active
+    color: $main-color
+
+@media screen and (min-width: 768px) // Desktop
+  nav.nav_main
+    .text
+      display: inline-block
+
+nav.nav_main-mobile
+  a
+    width: 33.33333%
+    display: inline-block
+    font-size: 2.4rem
+    text-align: center
+    padding: 1.2rem 0 .8rem
+    color: $main-color
+    background-color: $secondary-color
+  a:hover
+    opacity: 0.9
+  a.v-link-active
+    background-color: $main-color
+    color: $secondary-color
+
+
+// nav.nav_main
+//   margin-top: 4rem
+//   text-align: center
+//   a
+//     margin: 0 4rem
+//     font-size: 1.8rem
+//     font-weight: 600
+//     text-transform: uppercase
+//     padding-bottom: .25rem
+//   a.is-selected, a.v-link-active
+//     color: $white
 
 
 // Articles
 // ––––––––––––––––––––––––––––––––––––––––––––––––––
 
 article.article_events
+  display: block
   position: relative
-  height: 20rem
-  margin-top: 4rem
-  background: $orange
-  background: -webkit-linear-gradient(left, $orange, $orange-light)
-  background: -o-linear-gradient(right, $orange, $orange-light)
-  background: -moz-linear-gradient(right, $orange, $orange-light)
-  background: linear-gradient(to right, $orange, $orange-light)
-
+  color: $main-color
+  border-bottom: 1px solid $main-color
+  padding-top: 1.6rem
+  padding-bottom: 1.6rem
+  cursor: pointer
+  +transition(.3s)
+  &:hover
+    opacity: 0.8
+  
   .wrap_data
-    position: absolute
-    top: 1rem
-    left: 1rem
-    background-color: $white
-    height: 18rem
-    width: 18rem
-    color: $blue-dark
+    display: inline-block
+    width: 7.2rem
+    text-align: center
+    float: left
+    color: $main-color
+    line-height: .8
 
     span.day
-      position: absolute
-      width: 18rem
-      text-align: center
-      top: -2rem
-      left: -.5rem
+      display: block
       font-family: $hand-font
-      font-size: 14rem
+      font-size: 7.2rem
 
     span.month
-      position: absolute
-      width: 18rem
-      text-align: center
-      left: 0
-      bottom: 0
       font-family: $hand-font
-      font-size: 5rem
+      font-size: 4.8rem
 
   .wrap_content
-    margin-left: 20rem
-    color: $white
+    display: inline-block
+    width: calc(100% - 7.2rem)
+    margin-top: 1.2rem
+    padding-left: 1.2rem
+    float: left
+    color: $main-color
 
     span.week
       display: inline-block
-      margin-top: 2rem
+      margin-top: .4rem
       font-weight: 600
       font-size: 1.8rem
+      color: $secondary-color
+
+    p
+      font-size: 1.4rem
+
+  &:after
+    content: " "
+    display: table
+    clear: both
+
+@media screen and (min-width: 768px)
+  article.article_events
+    height: 20rem
+
+    .wrap_data
+      position: absolute
+      top: 1rem
+      left: 1rem
+      background-color: $white
+      height: 18rem
+      width: 18rem
+      color: $blue-dark
+      line-height: initial
+
+      span.day
+        position: absolute
+        width: 18rem
+        text-align: center
+        top: -3rem
+        left: -.5rem
+        font-family: $hand-font
+        font-size: 14rem
+
+      span.month
+        position: absolute
+        width: 18rem
+        text-align: center
+        left: 0
+        bottom: -2rem
+        font-family: $hand-font
+        font-size: 5rem
+
+    .wrap_content
+      margin-left: 20rem
+
+article.article_infos
+  border-bottom: 1px $main-color solid
+  padding-top: 1.6rem
+  padding-bottom: 1.6rem
+  cursor: pointer
+  +transition(.3s)
+  &:hover
+    opacity: 0.8
+
+  h2
+    color: $main-color
+
+
+// Mains
+// ––––––––––––––––––––––––––––––––––––––––––––––––––
+
+main.main_single
+  margin-top: 1.6rem
+  padding-bottom: 3.2rem
+  h1, h3
+    color: $main-color
+  h3
+    margin-top: 3.2rem
+    margin-bottom: 0
+  .week
+    display: inline-block
+    color: $secondary-color
+    font-size: 2.1rem
+    margin-bottom: 1.2rem
 
 

@@ -2,11 +2,15 @@
 <html lang="pt-br">
   <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <title></title>
+    <link rel="stylesheet" href="fonts/stylesheet.css">
+    <link rel="stylesheet" href="fonts/themify-icons.css">
     <link rel="stylesheet" href="css/style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.26/vue.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.6/marked.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue-router/0.7.13/vue-router.min.js"></script>
   </head>
   <body id="app">
     <header class="header_main">
@@ -14,23 +18,98 @@
         <div class="row">
           <div class="col-sm-4 col-sm-offset-4 wrap_logo"><img src="img/logo_mocidadeina-blue.svg" alt=""></div>
         </div>
-        <div class="row">
-          <nav class="nav_main"><a href="#" class="is-selected">eventos</a><a href="#">informações</a></nav>
-        </div>
+        <div class="row"></div>
       </div>
     </header>
-    <main class="container">
-      <div class="row">
-        <article v-for="event in events" class="article_events col-sm-6 col-sm-offset-3">
-          <div class="wrap_data"><span class="day">{{event.dia}}</span><span class="month">{{event.mes}}</span></div>
-          <div class="wrap_content"><span class="week">{{event.semana}} | {{event.horario}}</span>
-            <h1>{{event.evento}}</h1>
-            <h2 class="h3">{{event.local}}</h2>
-            <p>{{event.descricao}}</p>
+    <!--nav.nav_main.container.hidden-xs
+    a(v-link="{ path: '/', exact: true }")
+      span.ti-calendar
+      span.text eventos
+    a(v-link="{ path: '/infos' }") informações
+    -->
+    <nav class="nav_main-mobile"><a v-link="{ path: '/', exact: true }"><span class="ti-calendar"></span></a><a v-link="{ path: '/infos' }"><span class="ti-info-alt"></span></a><a v-link="{ path: '/print' }"><span class="ti-pin-alt"></span></a></nav>
+    <router-view></router-view>
+    <template id="pgEventos">
+      <main class="container">
+        <div class="row">
+          <article v-for="event in events" v-link="{name: 'event', params: {id: $index}}" class="article_events col-sm-8 col-sm-offset-2">
+            <div class="wrap_data"><span class="day">{{event.dia}}</span><span class="month">{{event.mes}}</span></div>
+            <div class="wrap_content">
+              <hgroup class="hidden-xs">
+                <h1 class="h2">{{event.evento}}</h1>
+                <h2 class="h3">{{event.local}}</h2>
+              </hgroup>
+              <hgroup class="visible-xs-block">
+                <h1 class="h3">{{event.evento}}</h1>
+                <h2 class="h4">{{event.local}}</h2>
+              </hgroup><span class="week">{{event.semana}} {{event.horario}}</span>
+            </div>
+          </article>
+        </div>
+      </main>
+    </template>
+    <template id="pgEvento">
+      <header class="header_single">
+        <div class="wrap_data">
+          <div class="container"><span class="day">{{events[$route.params.id].dia}}</span><span class="month">{{events[$route.params.id].mes}}</span></div>
+        </div>
+      </header>
+      <main class="main_single container">
+        <h1>{{events[$route.params.id].evento}}</h1>
+        <h2>{{event.local}}</h2><span class="week">{{events[$route.params.id].semana}} {{events[$route.params.id].horario}}</span>{{{events[$route.params.id].descricao | content}}}
+      </main>
+    </template>
+    <template id="pgInformacoes">
+      <header class="header_single">
+        <div class="wrap_data">
+          <div class="container"><span class="day">infos</span></div>
+        </div>
+      </header>
+      <main class="container">
+        <div class="row">
+          <article v-for="information in informations" v-link="{name: 'information', params: {id: $index}}" class="article_infos col-sm-8 col-sm-offset-2">
+            <h2>{{information.local}}</h2>
+          </article>
+        </div>
+      </main>
+    </template>
+    <template id="pgInformacao">
+      <header class="header_single">
+        <div class="wrap_data">
+          <div class="container">
+            <h1>{{informations[$route.params.id].local}}</h1>
           </div>
+        </div>
+      </header>
+      <main class="main_single container">
+        <dl>
+          <dt>Dia</dt>
+          <dd>{{informations[$route.params.id].semana}}</dd>
+          <dt>Horário</dt>
+          <dd>{{informations[$route.params.id].horario}}</dd>
+          <dt>Endereço</dt>
+          <dd>{{informations[$route.params.id].endereco}}</dd>
+          <dt>Infos</dt>
+          <dd>{{informations[$route.params.id].descricao}}</dd>
+        </dl>{{{informations[$route.params.id].map | map}}}
+      </main>
+    </template>
+    <template id="pgPrint">
+      <header class="header_single">
+        <div class="wrap_data">
+          <div class="container"><span class="day">print</span></div>
+        </div>
+      </header>
+      <main>
+        <article v-link="{ path: '/print/month' }" class="article_events col-sm-8 col-sm-offset-2">
+          <h2>Eventos do Mês</h2>
         </article>
-      </div>
-    </main>
+        <article v-link="{ path: '/print/day' }" class="article_events col-sm-8 col-sm-offset-2">
+          <h2>Próximo evento</h2>
+        </article>
+      </main>
+    </template>
+    <template id="pgPrintMonth"></template>
     <script src="js/app.js"></script>
   </body>
 </html>
