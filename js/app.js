@@ -118,29 +118,33 @@ $.when(
   var router = new VueRouter()
 
   router.map({
-    '/': {
+    '/events': {
       component: pgEventos
     },
-    '/event/:id': {
+    '/events/:id': {
       component: pgEvento,
       name: 'event'
     },
     '/infos': {
       component: pgInformacoes
     },
-    '/info/:id': {
+    '/infos/:id': {
       component: pgInformacao,
       name: 'information'
     },
     '/print': {
       component: pgPrint
     },
-    '/month': {
+    '/print/month': {
       component: pgPrintMonth
     },
-    '/day': {
+    '/print/day': {
       component: pgPrintDay
     }
+  })
+
+  router.redirect({
+    '*': '/events'
   })
 
   router.start(App, '#app')

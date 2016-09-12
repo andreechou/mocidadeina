@@ -1370,7 +1370,7 @@ h6, .h6 {
 
 p {
   line-height: 1.6;
-  margin: 0.5rem 0 1rem;
+  margin: .5rem 0 1rem;
 }
 
 a, a:visited, a:focus {
@@ -1449,28 +1449,31 @@ header.header_single span.month {
 }
 
 nav.nav_main {
-  text-align: center;
-  background-color: #00354e;
+  margin-top: 4rem;
+  margin-bottom: 2rem;
 }
 
 nav.nav_main a {
-  padding: 2rem;
-  width: 33.33333%;
   display: inline-block;
+  margin-right: 4rem;
   font-size: 1.8rem;
-  font-weight: 600;
   text-transform: uppercase;
   padding-bottom: .25rem;
+  color: #00354e;
 }
 
 nav.nav_main a.is-selected, nav.nav_main a.v-link-active {
   color: #eb5c2e;
 }
 
-@media screen and (min-width: 768px) {
-  nav.nav_main .text {
-    display: inline-block;
-  }
+nav.nav_main span {
+  font-weight: bold;
+}
+
+nav.nav_main span.text {
+  font-weight: normal;
+  margin-left: .8rem;
+  padding-bottom: .2rem;
 }
 
 nav.nav_main-mobile a {
@@ -1478,7 +1481,7 @@ nav.nav_main-mobile a {
   display: inline-block;
   font-size: 2.4rem;
   text-align: center;
-  padding: 1.2rem 0 0.8rem;
+  padding: 1.2rem 0 .8rem;
   color: #eb5c2e;
   background-color: #00354e;
 }
@@ -1557,39 +1560,26 @@ article.article_events:after {
 }
 
 @media screen and (min-width: 768px) {
-  article.article_events {
-    height: 20rem;
-  }
   article.article_events .wrap_data {
-    position: absolute;
-    top: 1rem;
-    left: 1rem;
-    background-color: #fff;
-    height: 18rem;
-    width: 18rem;
-    color: #002542;
-    line-height: initial;
+    display: inline-block;
+    width: 7.2rem;
+    text-align: center;
+    float: left;
+    color: #eb5c2e;
+    line-height: .8;
   }
   article.article_events .wrap_data span.day {
-    position: absolute;
-    width: 18rem;
-    text-align: center;
-    top: -3rem;
-    left: -.5rem;
+    display: block;
     font-family: "Asphalts", sans-serif;
-    font-size: 14rem;
+    font-size: 7.2rem;
   }
   article.article_events .wrap_data span.month {
-    position: absolute;
-    width: 18rem;
-    text-align: center;
-    left: 0;
-    bottom: -2rem;
     font-family: "Asphalts", sans-serif;
-    font-size: 5rem;
+    font-size: 4.8rem;
   }
   article.article_events .wrap_content {
-    margin-left: 20rem;
+    display: inline-block;
+    width: calc(100% - 7.2rem);
   }
 }
 
@@ -1630,6 +1620,154 @@ main.main_single .week {
   color: #00354e;
   font-size: 2.1rem;
   margin-bottom: 1.2rem;
+}
+
+aside.aside_eventlist {
+  border: 1px solid #eb5c2e;
+}
+
+.print_month {
+  position: relative;
+  background: #EB5C2E;
+  background: -moz-linear-gradient(top, #eb5c2e 0%, #f59e33 100%);
+  background: -webkit-linear-gradient(top, #eb5c2e 0%, #f59e33 100%);
+  background: linear-gradient(to bottom, #eb5c2e 0%, #f59e33 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eb5c2e', endColorstr='#f59e33',GradientType=0 );
+  width: 100%;
+  margin-top: 4rem;
+  padding-bottom: 100%;
+}
+
+.print_month h3, .print_month h5 {
+  text-align: center;
+  color: #fff;
+}
+
+.print_month h3 {
+  border-bottom: 1px solid #fff;
+  padding-bottom: 1.2rem;
+}
+
+.print_month h5 {
+  border-top: 1px solid #fff;
+  padding-top: 1.2rem;
+}
+
+.print_month .content {
+  position: absolute;
+  width: calc(100% - 1.6rem);
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+article.article_print .wrap_data {
+  display: inline-block;
+  width: 12rem;
+  margin-bottom: 1.2rem;
+  text-align: center;
+  float: left;
+  color: #fff;
+  line-height: .8;
+}
+
+article.article_print .wrap_data span.day {
+  font-family: "Asphalts", sans-serif;
+  font-size: 4.8rem;
+}
+
+article.article_print .wrap_data span.month {
+  font-family: "Asphalts", sans-serif;
+  font-size: 3.6rem;
+}
+
+article.article_print .wrap_data span.week {
+  display: block;
+  margin-top: .4rem;
+  font-size: 1.4rem;
+  color: #fff;
+}
+
+article.article_print .wrap_content {
+  display: inline-block;
+  width: calc(100% - 12rem);
+  margin-bottom: .4rem;
+  padding-left: 1.2rem;
+  float: left;
+  color: #fff;
+}
+
+article.article_print .wrap_content p {
+  font-size: 1.4rem;
+}
+
+article.article_print:after {
+  content: " ";
+  display: table;
+  clear: both;
+}
+
+.print_day {
+  position: relative;
+  background: #EB5C2E;
+  background: -moz-linear-gradient(top, #eb5c2e 0%, #f59e33 100%);
+  background: -webkit-linear-gradient(top, #eb5c2e 0%, #f59e33 100%);
+  background: linear-gradient(to bottom, #eb5c2e 0%, #f59e33 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eb5c2e', endColorstr='#f59e33',GradientType=0 );
+  width: 100%;
+  margin-top: 4rem;
+  padding-bottom: 100%;
+}
+
+.print_day .content {
+  position: absolute;
+  width: calc(100% - 1.6rem);
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.print_day h1, .print_day h2, .print_day h3, .print_day h5 {
+  text-align: center;
+  color: #fff;
+}
+
+.print_day h2 {
+  color: #00354e;
+}
+
+.print_day h3 {
+  font-family: "Asphalts", sans-serif;
+  font-size: 3.6rem;
+  letter-spacing: .8rem;
+  text-transform: normal;
+  color: #00354e;
+}
+
+.print_day h5 {
+  border-top: 1px solid #fff;
+  margin-top: 6rem;
+  padding-top: 1.2rem;
+}
+
+.print_day .wrap_data {
+  display: block;
+  text-align: center;
+  color: #fff;
+  line-height: .8;
+  margin-bottom: 4rem;
+}
+
+.print_day .wrap_data span.day {
+  font-family: "Asphalts", sans-serif;
+  font-size: 7.2rem;
+}
+
+.print_day .wrap_data span.month {
+  font-family: "Asphalts", sans-serif;
+  font-size: 5.6rem;
 }
 
 .font-normal {

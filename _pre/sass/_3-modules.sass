@@ -44,24 +44,24 @@ header.header_single
 // ––––––––––––––––––––––––––––––––––––––––––––––––––
 
 nav.nav_main
-  text-align: center
-  background-color: $secondary-color
+  margin-top: 4rem
+  margin-bottom: 2rem
   a
-    padding: 2rem
-    width: 33.33333%
     display: inline-block
-
+    margin-right: 4rem
     font-size: 1.8rem
-    font-weight: 600
     text-transform: uppercase
     padding-bottom: .25rem
+    color: $secondary-color
   a.is-selected, a.v-link-active
     color: $main-color
+  span
+    font-weight: bold
+  span.text
+    font-weight: normal
+    margin-left: .8rem
+    padding-bottom: .2rem
 
-@media screen and (min-width: 768px) // Desktop
-  nav.nav_main
-    .text
-      display: inline-block
 
 nav.nav_main-mobile
   a
@@ -149,38 +149,27 @@ article.article_events
 
 @media screen and (min-width: 768px)
   article.article_events
-    height: 20rem
 
     .wrap_data
-      position: absolute
-      top: 1rem
-      left: 1rem
-      background-color: $white
-      height: 18rem
-      width: 18rem
-      color: $blue-dark
-      line-height: initial
+      display: inline-block
+      width: 7.2rem
+      text-align: center
+      float: left
+      color: $main-color
+      line-height: .8
 
       span.day
-        position: absolute
-        width: 18rem
-        text-align: center
-        top: -3rem
-        left: -.5rem
+        display: block
         font-family: $hand-font
-        font-size: 14rem
+        font-size: 7.2rem
 
       span.month
-        position: absolute
-        width: 18rem
-        text-align: center
-        left: 0
-        bottom: -2rem
         font-family: $hand-font
-        font-size: 5rem
+        font-size: 4.8rem
 
     .wrap_content
-      margin-left: 20rem
+      display: inline-block
+      width: calc(100% - 7.2rem)
 
 article.article_infos
   border-bottom: 1px $main-color solid
@@ -190,7 +179,6 @@ article.article_infos
   +transition(.3s)
   &:hover
     opacity: 0.8
-
   h2
     color: $main-color
 
@@ -212,4 +200,10 @@ main.main_single
     font-size: 2.1rem
     margin-bottom: 1.2rem
 
+
+// Asides
+// ––––––––––––––––––––––––––––––––––––––––––––––––––
+
+aside.aside_eventlist
+  border: 1px solid $main-color
 

@@ -19,13 +19,18 @@ html(lang="pt-br")
           .col-sm-4.col-sm-offset-4.wrap_logo
             img(src="img/logo_mocidadeina-blue.svg", alt="")
         .row
-    //nav.nav_main.container.hidden-xs
-      a(v-link="{ path: '/', exact: true }")
+    nav.nav_main.container.hidden-xs
+      a(v-link="{ path: '/events' }")
         span.ti-calendar
         span.text eventos
-      a(v-link="{ path: '/infos' }") informações
-    nav.nav_main-mobile
-      a(v-link="{ path: '/', exact: true }")
+      a(v-link="{ path: '/infos' }")
+        span.ti-info-alt
+        span.text informações
+      a(v-link="{ path: '/print' }")
+        span.ti-pin-alt
+        span.text print
+    nav.nav_main-mobile.visible-xs-block
+      a(v-link="{ path: '/events' }")
         span.ti-calendar
       a(v-link="{ path: '/infos' }")
         span.ti-info-alt
@@ -37,20 +42,21 @@ html(lang="pt-br")
 
     template#pgEventos
       main.container
-        .row
-          article.article_events.col-sm-8.col-sm-offset-2(v-for="event in events", v-link="{name: 'event', params: {id: $index}}")
-            .wrap_data
-              span.day {{event.dia}}
-              span.month {{event.mes}}
-            .wrap_content
-              hgroup.hidden-xs
-                h1.h2 {{event.evento}}
-                h2.h3 {{event.local}}
-              hgroup.visible-xs-block
-                h1.h3 {{event.evento}}
-                h2.h4 {{event.local}}
-              span.week {{event.semana}} {{event.horario}}
-              //- p {{event.descricao}}
+        aside.aside_eventlist.col-sm-4
+          .row(v-for="event in events", v-link="{name: 'event', params: {id: $index}}")
+            article.article_events
+              .wrap_data
+                span.day {{event.dia}}
+                span.month {{event.mes}}
+              .wrap_content
+                hgroup.hidden-xs
+                  h1.h2 {{event.evento}}
+                  h2.h3 {{event.local}}
+                hgroup.visible-xs-block
+                  h1.h3 {{event.evento}}
+                  h2.h4 {{event.local}}
+                span.week {{event.semana}} {{event.horario}}
+                //- p {{event.descricao}}
 
     template#pgEvento
       header.header_single
@@ -105,6 +111,58 @@ html(lang="pt-br")
           h2 Próximo evento
 
     template#pgPrintMonth
+      .print_month
+        .content
+          h3 Eventos do Mês
+          article.article_print
+            .wrap_data
+              span.day {{events[0].dia}}
+              span.month {{events[0].mes}}
+              span.week {{events[0].semana}} {{events[0].horario}}
+            .wrap_content
+              hgroup
+                h1.h3 {{events[0].evento}}
+                h2.h5 {{events[0].local}}
+          article.article_print
+            .wrap_data
+              span.day {{events[1].dia}}
+              span.month {{events[1].mes}}
+              span.week {{events[1].semana}} {{events[1].horario}}
+            .wrap_content
+              hgroup
+                h1.h3 {{events[1].evento}}
+                h2.h4 {{events[1].local}}
+          article.article_print
+            .wrap_data
+              span.day {{events[2].dia}}
+              span.month {{events[2].mes}}
+              span.week {{events[2].semana}} {{events[2].horario}}
+            .wrap_content
+              hgroup
+                h1.h3 {{events[2].evento}}
+                h2.h4 {{events[2].local}}
+          article.article_print
+            .wrap_data
+              span.day {{events[3].dia}}
+              span.month {{events[3].mes}}
+              span.week {{events[3].semana}} {{events[3].horario}}
+            .wrap_content
+              hgroup
+                h1.h3 {{events[3].evento}}
+                h2.h4 {{events[3].local}}
+          h5 mais infos em ina.o4o.io
+
+    template#pgPrintDay
+      .print_day
+        .content
+          h3 Semana que vem
+          .wrap_data
+            span.day {{events[0].dia}}
+            span.month {{events[0].mes}}
+          h1 {{events[0].evento}}
+          h2 {{events[0].local}}
+          h5 mais infos em ina.o4o.io
+
     
 
     script(src="js/app.js")

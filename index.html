@@ -21,31 +21,28 @@
         <div class="row"></div>
       </div>
     </header>
-    <!--nav.nav_main.container.hidden-xs
-    a(v-link="{ path: '/', exact: true }")
-      span.ti-calendar
-      span.text eventos
-    a(v-link="{ path: '/infos' }") informações
-    -->
-    <nav class="nav_main-mobile"><a v-link="{ path: '/', exact: true }"><span class="ti-calendar"></span></a><a v-link="{ path: '/infos' }"><span class="ti-info-alt"></span></a><a v-link="{ path: '/print' }"><span class="ti-pin-alt"></span></a></nav>
+    <nav class="nav_main container hidden-xs"><a v-link="{ path: '/events' }"><span class="ti-calendar"></span><span class="text">eventos</span></a><a v-link="{ path: '/infos' }"><span class="ti-info-alt"></span><span class="text">informações</span></a><a v-link="{ path: '/print' }"><span class="ti-pin-alt"></span><span class="text">print</span></a></nav>
+    <nav class="nav_main-mobile visible-xs-block"><a v-link="{ path: '/events' }"><span class="ti-calendar"></span></a><a v-link="{ path: '/infos' }"><span class="ti-info-alt"></span></a><a v-link="{ path: '/print' }"><span class="ti-pin-alt"></span></a></nav>
     <router-view></router-view>
     <template id="pgEventos">
       <main class="container">
-        <div class="row">
-          <article v-for="event in events" v-link="{name: 'event', params: {id: $index}}" class="article_events col-sm-8 col-sm-offset-2">
-            <div class="wrap_data"><span class="day">{{event.dia}}</span><span class="month">{{event.mes}}</span></div>
-            <div class="wrap_content">
-              <hgroup class="hidden-xs">
-                <h1 class="h2">{{event.evento}}</h1>
-                <h2 class="h3">{{event.local}}</h2>
-              </hgroup>
-              <hgroup class="visible-xs-block">
-                <h1 class="h3">{{event.evento}}</h1>
-                <h2 class="h4">{{event.local}}</h2>
-              </hgroup><span class="week">{{event.semana}} {{event.horario}}</span>
-            </div>
-          </article>
-        </div>
+        <aside class="aside_eventlist col-sm-4">
+          <div v-for="event in events" v-link="{name: 'event', params: {id: $index}}" class="row">
+            <article class="article_events">
+              <div class="wrap_data"><span class="day">{{event.dia}}</span><span class="month">{{event.mes}}</span></div>
+              <div class="wrap_content">
+                <hgroup class="hidden-xs">
+                  <h1 class="h2">{{event.evento}}</h1>
+                  <h2 class="h3">{{event.local}}</h2>
+                </hgroup>
+                <hgroup class="visible-xs-block">
+                  <h1 class="h3">{{event.evento}}</h1>
+                  <h2 class="h4">{{event.local}}</h2>
+                </hgroup><span class="week">{{event.semana}} {{event.horario}}</span>
+              </div>
+            </article>
+          </div>
+        </aside>
       </main>
     </template>
     <template id="pgEvento">
@@ -109,7 +106,61 @@
         </article>
       </main>
     </template>
-    <template id="pgPrintMonth"></template>
+    <template id="pgPrintMonth">
+      <div class="print_month">
+        <div class="content">
+          <h3>Eventos do Mês</h3>
+          <article class="article_print">
+            <div class="wrap_data"><span class="day">{{events[0].dia}}</span><span class="month">{{events[0].mes}}</span><span class="week">{{events[0].semana}} {{events[0].horario}}</span></div>
+            <div class="wrap_content">
+              <hgroup>
+                <h1 class="h3">{{events[0].evento}}</h1>
+                <h2 class="h5">{{events[0].local}}</h2>
+              </hgroup>
+            </div>
+          </article>
+          <article class="article_print">
+            <div class="wrap_data"><span class="day">{{events[1].dia}}</span><span class="month">{{events[1].mes}}</span><span class="week">{{events[1].semana}} {{events[1].horario}}</span></div>
+            <div class="wrap_content">
+              <hgroup>
+                <h1 class="h3">{{events[1].evento}}</h1>
+                <h2 class="h4">{{events[1].local}}</h2>
+              </hgroup>
+            </div>
+          </article>
+          <article class="article_print">
+            <div class="wrap_data"><span class="day">{{events[2].dia}}</span><span class="month">{{events[2].mes}}</span><span class="week">{{events[2].semana}} {{events[2].horario}}</span></div>
+            <div class="wrap_content">
+              <hgroup>
+                <h1 class="h3">{{events[2].evento}}</h1>
+                <h2 class="h4">{{events[2].local}}</h2>
+              </hgroup>
+            </div>
+          </article>
+          <article class="article_print">
+            <div class="wrap_data"><span class="day">{{events[3].dia}}</span><span class="month">{{events[3].mes}}</span><span class="week">{{events[3].semana}} {{events[3].horario}}</span></div>
+            <div class="wrap_content">
+              <hgroup>
+                <h1 class="h3">{{events[3].evento}}</h1>
+                <h2 class="h4">{{events[3].local}}</h2>
+              </hgroup>
+            </div>
+          </article>
+          <h5>mais infos em ina.o4o.io</h5>
+        </div>
+      </div>
+    </template>
+    <template id="pgPrintDay">
+      <div class="print_day">
+        <div class="content">
+          <h3>Semana que vem</h3>
+          <div class="wrap_data"><span class="day">{{events[0].dia}}</span><span class="month">{{events[0].mes}}</span></div>
+          <h1>{{events[0].evento}}</h1>
+          <h2>{{events[0].local}}</h2>
+          <h5>mais infos em ina.o4o.io</h5>
+        </div>
+      </div>
+    </template>
     <script src="js/app.js"></script>
   </body>
 </html>
