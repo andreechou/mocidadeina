@@ -10,6 +10,8 @@ $.when(
   })
 ).then(function() {
 
+  $('.page_loading').css('display', 'none');
+
   // Data Organizer
   
   eventsNum = 7;

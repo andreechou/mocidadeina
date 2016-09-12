@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <title></title><link rel="apple-touch-icon" sizes="57x57" href="favicon/apple-icon-57x57.png">
+    <title>Mocidade INA</title><link rel="apple-touch-icon" sizes="57x57" href="favicon/apple-icon-57x57.png">
     <link rel="apple-touch-icon" sizes="60x60" href="favicon/apple-icon-60x60.png">
     <link rel="apple-touch-icon" sizes="72x72" href="favicon/apple-icon-72x72.png">
     <link rel="apple-touch-icon" sizes="76x76" href="favicon/apple-icon-76x76.png">
@@ -21,6 +21,8 @@
     <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
     <meta name="theme-color" content="#00354e">
     <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="Mocidade INA">
     <link rel="stylesheet" href="fonts/stylesheet.css">
     <link rel="stylesheet" href="fonts/themify-icons.css">
     <link rel="stylesheet" href="css/style.css">
@@ -40,6 +42,7 @@
     </header>
     <nav class="nav_main container hidden-xs"><a v-link="{ path: '/events' }"><span class="ti-calendar"></span><span class="text">eventos</span></a><a v-link="{ path: '/infos' }"><span class="ti-info-alt"></span><span class="text">informações</span></a><a v-link="{ path: '/print' }"><span class="ti-pin-alt"></span><span class="text">print</span></a></nav>
     <nav class="nav_main-mobile visible-xs-block"><a v-link="{ path: '/events' }"><span class="ti-calendar"></span></a><a v-link="{ path: '/infos' }"><span class="ti-info-alt"></span></a><a v-link="{ path: '/print' }"><span class="ti-pin-alt"></span></a></nav>
+    <div class="page_loading loading"></div>
     <router-view></router-view>
     <template id="pgEventos">
       <main class="container">
@@ -179,5 +182,6 @@
       </div>
     </template>
     <script src="js/app.js"></script>
+    <script src="js/main.js"></script>
   </body>
 </html>

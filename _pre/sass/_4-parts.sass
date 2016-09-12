@@ -140,3 +140,19 @@ article.article_print
       letter-spacing: .4rem
     h5
       font-size: 1.4rem
+
+
+// Page Loading
+// ––––––––––––––––––––––––––––––––––––––––––––––––––
+
+.page_loading
+  width: 100%
+  height: calc(100vh - 140px)
+.page_loading.loading::after
+  height: 5rem
+  width: 5rem
+  border: .25rem solid $main-color
+  border-right-color: transparent
+  border-top-color: transparent
+  margin-left: -2.5rem
+  margin-top: -2.5rem

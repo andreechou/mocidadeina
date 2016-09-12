@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /*!
  * Bootstrap v3.3.5 (http://getbootstrap.com)
  * Copyright 2011-2016 Twitter, Inc.
@@ -1323,6 +1324,30 @@ img {
   }
 }
 
+/* Loading */
+/* ––––––––––––––––––––––––––––––––––––––––––––––––––*/
+@-webkit-keyframes loading {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes loading {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
 html {
   font-size: 62.5%;
   box-sizing: border-box;
@@ -1395,6 +1420,31 @@ dl dd {
   color: #00354e;
 }
 
+.loading {
+  color: transparent !important;
+  min-height: 1.6rem;
+  pointer-events: none;
+  position: relative;
+}
+
+.loading::after {
+  -webkit-animation: loading 500ms infinite linear;
+  animation: loading 500ms infinite linear;
+  border: 0.1rem solid #eb5c2e;
+  border-radius: 50%;
+  border-right-color: transparent;
+  border-top-color: transparent;
+  content: "";
+  display: block;
+  height: 1.6rem;
+  left: 50%;
+  margin-left: -.8rem;
+  margin-top: -.8rem;
+  position: absolute;
+  top: 50%;
+  width: 1.6rem;
+}
+
 header.header_main {
   background-color: #00354e;
   height: 7.2rem;
@@ -1408,6 +1458,10 @@ header.header_main .wrap_logo {
 
 header.header_main .wrap_logo img {
   height: 3.2rem;
+}
+
+header.header_main.is-shrink {
+  margin-bottom: 7.2rem;
 }
 
 @media screen and (min-width: 768px) {
@@ -1476,6 +1530,12 @@ nav.nav_main span.text {
   padding-bottom: .2rem;
 }
 
+nav.nav_main-mobile {
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
 nav.nav_main-mobile a {
   width: 33.33333%;
   display: inline-block;
@@ -1487,12 +1547,20 @@ nav.nav_main-mobile a {
 }
 
 nav.nav_main-mobile a:hover {
-  opacity: 0.9;
+  background-color: #005177;
 }
 
 nav.nav_main-mobile a.v-link-active {
   background-color: #eb5c2e;
   color: #00354e;
+}
+
+nav.nav_main-mobile.is-shrink {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
 }
 
 article.article_events {
@@ -1804,6 +1872,21 @@ article.article_print:after {
   .print_day h5 {
     font-size: 1.4rem;
   }
+}
+
+.page_loading {
+  width: 100%;
+  height: calc(100vh - 140px);
+}
+
+.page_loading.loading::after {
+  height: 5rem;
+  width: 5rem;
+  border: 0.25rem solid #eb5c2e;
+  border-right-color: transparent;
+  border-top-color: transparent;
+  margin-left: -2.5rem;
+  margin-top: -2.5rem;
 }
 
 .font-normal {
