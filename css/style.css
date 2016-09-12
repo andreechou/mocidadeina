@@ -1370,7 +1370,7 @@ h6, .h6 {
 
 p {
   line-height: 1.6;
-  margin: .5rem 0 1rem;
+  margin: 0.5rem 0 1rem;
 }
 
 a, a:visited, a:focus {
@@ -1481,7 +1481,7 @@ nav.nav_main-mobile a {
   display: inline-block;
   font-size: 2.4rem;
   text-align: center;
-  padding: 1.2rem 0 .8rem;
+  padding: 1.2rem 0 0.8rem;
   color: #eb5c2e;
   background-color: #00354e;
 }
@@ -1622,8 +1622,10 @@ main.main_single .week {
   margin-bottom: 1.2rem;
 }
 
-aside.aside_eventlist {
-  border: 1px solid #eb5c2e;
+@media screen and (min-width: 768px) {
+  aside.aside_eventlist {
+    border: 1px solid #eb5c2e;
+  }
 }
 
 .print_month {
@@ -1708,6 +1710,30 @@ article.article_print:after {
   clear: both;
 }
 
+@media screen and (max-width: 320px) {
+  .print_month h3 {
+    font-size: 1.8rem;
+  }
+  .print_month h5 {
+    font-size: 1.3rem;
+  }
+  article.article_print .wrap_data span.day {
+    font-size: 3.2rem;
+  }
+  article.article_print .wrap_data span.month {
+    font-size: 2.4rem;
+  }
+  article.article_print .wrap_data span.week {
+    font-size: 1.4rem;
+  }
+  article.article_print .wrap_content .h3 {
+    font-size: 1.8rem;
+  }
+  article.article_print .wrap_content .h4 {
+    font-size: 1.4rem;
+  }
+}
+
 .print_day {
   position: relative;
   background: #EB5C2E;
@@ -1741,7 +1767,7 @@ article.article_print:after {
 .print_day h3 {
   font-family: "Asphalts", sans-serif;
   font-size: 3.6rem;
-  letter-spacing: .8rem;
+  letter-spacing: .4rem;
   text-transform: normal;
   color: #00354e;
 }
@@ -1768,6 +1794,16 @@ article.article_print:after {
 .print_day .wrap_data span.month {
   font-family: "Asphalts", sans-serif;
   font-size: 5.6rem;
+}
+
+@media screen and (max-width: 320px) {
+  .print_day h3 {
+    font-size: 3.2rem;
+    letter-spacing: .4rem;
+  }
+  .print_day h5 {
+    font-size: 1.4rem;
+  }
 }
 
 .font-normal {

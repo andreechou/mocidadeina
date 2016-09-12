@@ -66,6 +66,27 @@ article.article_print
     display: table
     clear: both
 
+@media screen and (max-width: 320px)
+  .print_month
+    h3
+      font-size: 1.8rem
+    h5
+      font-size: 1.3rem
+  article.article_print
+    .wrap_data
+      span.day
+        font-size: 3.2rem
+      span.month
+        font-size: 2.4rem
+      span.week
+        font-size: 1.4rem
+    .wrap_content
+      .h3
+        font-size: 1.8rem
+      .h4
+        font-size: 1.4rem
+
+
 
 .print_day
   position: relative
@@ -92,7 +113,7 @@ article.article_print
   h3
     font-family: $hand-font
     font-size: 3.6rem
-    letter-spacing: .8rem
+    letter-spacing: .4rem
     text-transform: normal
     color: $secondary-color
   h5
@@ -111,3 +132,11 @@ article.article_print
     span.month
       font-family: $hand-font
       font-size: 5.6rem
+
+@media screen and (max-width: 320px)
+  .print_day
+    h3
+      font-size: 3.2rem
+      letter-spacing: .4rem
+    h5
+      font-size: 1.4rem
